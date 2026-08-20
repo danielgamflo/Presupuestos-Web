@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Propuesta de Sitio Web — Javiera Marambio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Petrona:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+/* ═══════════════════════════════════════════════════════════
+   Propuesta de Sitio Web — Javiera Marambio
+   Daniel Gamboa · agosto 2026
+   Minimalista. Profesional. Hecho para artistas.
+   ═══════════════════════════════════════════════════════════ */
+
+:root{
+  --paper:    #FDF7F9;
+  --surface:  #F5E8ED;
+  --sunk:     #EFE0E9;
+  --ink:      #2D1B25;
+  --ink-2:    #6B4D5C;
+  --ink-3:    #9B7D8A;
+  --rule:     #D4B8C5;
+  --rule-2:   #E0C9D5;
+  --accent:   #D946A6;
+  --accent-bg: #F8D7E8;
+
+  --display: "Petrona", Georgia, serif;
+  --body:    "IBM Plex Sans", system-ui, sans-serif;
+  --mono:    "IBM Plex Mono", ui-monospace, monospace;
+
+  --measure: 66ch;
+  --pad: clamp(1.25rem, 4vw, 3rem);
+}
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:    #1a1218;
+    --surface:  #251b22;
+    --sunk:     #2a1f27;
+    --ink:      #f5d9e8;
+    --ink-2:    #d9aec0;
+    --ink-3:    #b088a0;
+    --rule:     #4a3640;
+    --rule-2:   #3a2d34;
+    --accent:   #f08fd4;
+    --accent-bg: #3d1e2d;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:    #1a1218;
+  --surface:  #251b22;
+  --sunk:     #2a1f27;
+  --ink:      #f5d9e8;
+  --ink-2:    #d9aec0;
+  --ink-3:    #b088a0;
+  --rule:     #4a3640;
+  --rule-2:   #3a2d34;
+  --accent:   #f08fd4;
+  --accent-bg: #3d1e2d;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--body);
+  font-weight:300;
+  font-size:1rem;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
+
+.sheet{
+  max-width:56rem;
+  margin-inline:auto;
+  padding:var(--pad);
+  padding-block:clamp(2.5rem,6vw,4.5rem) clamp(3rem,8vw,6rem);
+}
+
+.masthead{ border-bottom:2px solid var(--ink); padding-bottom:1.5rem; }
+.kicker{
+  font-family:var(--mono);
+  font-size:.6875rem; font-weight:500;
+  letter-spacing:.14em; text-transform:uppercase;
+  color:var(--ink-3);
+  display:flex; flex-wrap:wrap; gap:.5rem 1.25rem;
+  margin-bottom:1.5rem;
+}
+h1{
+  font-family:var(--display);
+  font-weight:500;
+  font-size:clamp(2.1rem,6vw,3.6rem);
+  line-height:1.02;
+  letter-spacing:-.02em;
+  margin:0 0 .75rem;
+  text-wrap:balance;
+}
+h1 span{ font-style:italic; font-weight:400; color:var(--ink-2); }
+.standfirst{
+  font-size:clamp(1.0625rem,1rem+.4vw,1.25rem);
+  line-height:1.5;
+  color:var(--ink-2);
+  max-width:48ch;
+  margin:0;
+}
+.meta{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:1rem 1.5rem;
+  margin-top:2rem;
+  font-family:var(--mono);
+  font-size:.75rem;
+}
+.meta dt{ color:var(--ink-3); letter-spacing:.06em; text-transform:uppercase; font-size:.625rem; margin-bottom:.3rem; }
+.meta dd{ margin:0; color:var(--ink); }
+
+section{ margin-top:clamp(3rem,7vw,5rem); }
+h2{
+  font-family:var(--display);
+  font-weight:500;
+  font-size:clamp(1.5rem,3.5vw,2.1rem);
+  line-height:1.15;
+  letter-spacing:-.015em;
+  margin:0 0 1.25rem;
+  text-wrap:balance;
+}
+.sec-label{
+  font-family:var(--mono);
+  font-size:.625rem; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--ink-3);
+  padding-bottom:.6rem; margin-bottom:1.5rem;
+  border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:1rem;
+}
+p{ max-width:var(--measure); margin:0 0 1rem; }
+p:last-child{ margin-bottom:0; }
+strong{ font-weight:600; color:var(--ink); }
+em{ font-style:italic; }
+
+.capacity{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(160px,100%),1fr));
+  border:1px solid var(--rule);
+  background:var(--surface);
+  margin-block:1.75rem;
+}
+.cap{
+  padding:1.1rem 1.25rem;
+  border-right:1px solid var(--rule);
+}
+.cap:last-child{ border-right:0; }
+.cap b{
+  display:block;
+  font-family:var(--display);
+  font-size:1.85rem; font-weight:500; line-height:1;
+  margin-bottom:.35rem;
+}
+.cap span{
+  font-family:var(--mono); font-size:.625rem;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3);
+}
+
+.phase{
+  display:grid;
+  grid-template-columns:5rem 1fr;
+  gap:0 1.5rem;
+  padding-block:1.6rem;
+  border-bottom:1px solid var(--rule-2);
+}
+.phase:first-of-type{ border-top:1px solid var(--rule); }
+.phase-num{
+  font-family:var(--mono);
+  font-size:1.125rem;
+  font-weight:500;
+  color:var(--accent);
+  line-height:1;
+}
+.phase-label{
+  font-family:var(--mono);
+  font-size:.5625rem;
+  font-weight:500;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  padding:.2rem .4rem;
+  border:1px solid var(--accent);
+  color:var(--accent);
+  background:var(--accent-bg);
+  white-space:nowrap;
+  margin-top:.3rem;
+}
+.phase h3{
+  font-family:var(--display);
+  font-size:1.1875rem; font-weight:600; line-height:1.25;
+  margin:0 0 .75rem; letter-spacing:-.01em;
+  text-wrap:balance;
+}
+.phase-content{
+  font-size:.9375rem;
+  color:var(--ink-2);
+  line-height:1.7;
+}
+.phase-content strong{
+  display:block;
+  color:var(--accent);
+  margin-top:.75rem;
+  margin-bottom:.35rem;
+}
+@media (max-width:34rem){
+  .phase{ grid-template-columns:1fr; gap:.75rem; }
+}
+
+.scroller{ overflow-x:auto; border:1px solid var(--rule); }
+table{ border-collapse:collapse; width:100%; min-width:40rem; }
+caption{
+  text-align:left; font-family:var(--mono);
+  font-size:.625rem; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--ink-3); padding:.85rem 1rem; background:var(--sunk);
+  border-bottom:1px solid var(--rule);
+}
+th,td{ text-align:left; padding:.85rem 1rem; vertical-align:top; font-size:.875rem; border-bottom:1px solid var(--rule-2); }
+thead th{
+  font-family:var(--mono); font-size:.625rem; font-weight:500;
+  letter-spacing:.12em; text-transform:uppercase;
+  background:var(--surface); color:var(--ink-3);
+  border-bottom:1px solid var(--rule);
+  position:sticky; top:0;
+}
+thead th:nth-child(2){ color:var(--accent); }
+thead th:nth-child(3){ color:var(--accent); }
+tbody th{ font-weight:500; color:var(--ink); width:11rem; }
+td:nth-child(2){ color:var(--ink-2); }
+td:nth-child(3){ color:var(--ink); background:var(--accent-bg); }
+tbody tr:last-child th, tbody tr:last-child td{ border-bottom:0; }
+
+.budget{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));
+  gap:1px;
+  background:var(--rule);
+  border:1px solid var(--rule);
+  margin-top:1.5rem;
+}
+.budget > div{ background:var(--paper); padding:1.25rem; }
+.budget h3{
+  font-family:var(--mono);
+  font-size:.625rem;
+  font-weight:500;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  margin:0 0 .9rem;
+  padding-bottom:.5rem;
+  border-bottom:1px solid var(--rule-2);
+  color:var(--accent);
+}
+.budget .amount{
+  font-family:var(--display);
+  font-size:1.6875rem;
+  line-height:1;
+  color:var(--ink);
+}
+.budget .unit{
+  font-family:var(--mono);
+  font-size:.5625rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink-3);
+  margin:.4rem 0 .9rem;
+}
+.budget p{
+  font-size:.8125rem;
+  color:var(--ink-2);
+}
+
+.terms{
+  margin:1.25rem 0 0;
+  padding:1.1rem 1.25rem;
+  background:var(--surface);
+  border-left:3px solid var(--accent);
+  list-style:none;
+  display:grid;
+  gap:.5rem;
+}
+.terms li{
+  font-size:.8125rem;
+  color:var(--ink-2);
+  padding-left:1rem;
+  position:relative;
+}
+.terms li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:.62em;
+  width:5px;
+  height:1px;
+  background:var(--ink-3);
+}
+
+.scope{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));
+  gap:1px;
+  background:var(--rule);
+  border:1px solid var(--rule);
+  margin-top:1.5rem;
+}
+.scope > div{
+  background:var(--paper);
+  padding:1.25rem;
+}
+.scope h3{
+  font-family:var(--mono);
+  font-size:.625rem;
+  font-weight:500;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  margin:0 0 .9rem;
+  padding-bottom:.5rem;
+  border-bottom:1px solid var(--rule-2);
+  color:var(--accent);
+}
+.scope ul{
+  margin:0;
+  padding:0;
+  list-style:none;
+  display:grid;
+  gap:.5rem;
+}
+.scope li{
+  font-size:.875rem;
+  color:var(--ink-2);
+  padding-left:1rem;
+  position:relative;
+}
+.scope li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:.62em;
+  width:5px;
+  height:1px;
+  background:var(--ink-3);
+}
+
+.note{
+  margin-top:clamp(3rem,7vw,5rem);
+  padding:1.35rem 1.5rem;
+  background:var(--surface);
+  border-left:3px solid var(--accent);
+}
+.note h3{
+  font-family:var(--mono);
+  font-size:.625rem;
+  font-weight:500;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin:0 0 .8rem;
+}
+.note p{
+  font-size:.875rem;
+  color:var(--ink-2);
+}
+
+footer{
+  margin-top:clamp(3rem,7vw,5rem);
+  padding-top:1.25rem;
+  border-top:2px solid var(--ink);
+  font-family:var(--mono);
+  font-size:.6875rem;
+  color:var(--ink-3);
+  display:flex;
+  flex-wrap:wrap;
+  gap:.5rem 1.5rem;
+  justify-content:space-between;
+}
+</style>
+
+<div class="sheet">
+
+<header class="masthead">
+  <div class="kicker">
+    <span>Daniel Gamboa</span>
+    <span>Propuesta de proyecto</span>
+    <span>Agosto 2026</span>
+  </div>
+  <h1>Tu sitio web<br><span>profesional y minimalista.</span></h1>
+  <p class="standfirst">Una propuesta simple: un sitio donde muestres tus obras, compartas historias detrás de ellas, y tengas total control sin necesidad de saber código. Diseñado especialmente para artistas como tú.</p>
+
+  <dl class="meta">
+    <div><dt>Para</dt><dd>Javiera Marambio</dd></div>
+    <div><dt>Tipo</dt><dd>Sitio web + Panel de gestión</dd></div>
+    <div><dt>Duración</dt><dd>6 semanas</dd></div>
+    <div><dt>Inversión</dt><dd>$550.000</dd></div>
+  </dl>
+</header>
+
+<section>
+  <div class="sec-label"><span>La situación hoy</span><span>01</span></div>
+  <h2>Tienes un sitio, pero necesitas un portafolio profesional.</h2>
+
+  <p>Tu sitio actual existe, pero quiero que sea más tuyo. Que cuando alguien te busque, vea exactamente lo que quieres que vean: tus obras en primer plano, bien presentadas, profesionales.</p>
+
+  <p>Además, cada vez que quieres agregar una obra o escribir una historia detrás de ella, necesitas ayuda técnica. Lo que necesitas es tener control total: poder actualizar tu sitio cuando quieras, agregar obras nuevas, escribir—sin depender de nadie para eso.</p>
+
+  <div class="capacity">
+    <div class="cap"><b>Blogger</b><span>plantilla genérica</span></div>
+    <div class="cap"><b>~12</b><span>entradas publicadas</span></div>
+    <div class="cap"><b>Sin panel</b><span>para ti</span></div>
+    <div class="cap"><b>Confuso</b><span>para visitantes</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-label"><span>La solución</span><span>02</span></div>
+  <h2>Un sitio minimalista, donde tú eres la protagonista.</h2>
+
+  <p>Voy a hacer un sitio limpio y profesional. Galería con tus obras en primer plano, un blog para contar las historias detrás de ellas, página sobre ti, y un formulario de contacto. Nada más de lo que necesitas.</p>
+
+  <p>Lo más importante: tú podrás agregar obras, escribir historias, cambiar textos—todo sin tocar código. Un panel simple donde entras, subes foto, escribes, y listo.</p>
+
+  <div class="capacity">
+    <div class="cap"><b>∞ obras</b><span>sin límite</span></div>
+    <div class="cap"><b>∞ historias</b><span>en el blog</span></div>
+    <div class="cap"><b>Panel tuyo</b><span>fácil de usar</span></div>
+    <div class="cap"><b>Profesional</b><span>desde el primer día</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-label"><span>Las fases</span><span>03</span></div>
+  <h2>El proceso, paso a paso.</h2>
+
+  <div class="phase">
+    <div>
+      <div class="phase-num">01</div>
+      <div class="phase-label">Entrevista</div>
+    </div>
+    <div>
+      <h3>Conocer tu visión</h3>
+      <div class="phase-content">
+        Hablamos sobre tu trabajo, tu estilo, a quién le quieres hablar con tu sitio. Miro tus obras, entiendo tu filosofía. Eso me sirve para definir cómo se va a ver el sitio.
+        <strong>Duración:</strong> 1 semana
+        <strong>Lo que entrego:</strong> Bosquejo visual de cómo se verá tu sitio (para que lo apruebes antes de hacerlo)
+      </div>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div>
+      <div class="phase-num">02</div>
+      <div class="phase-label">Construcción</div>
+    </div>
+    <div>
+      <h3>Hago el sitio</h3>
+      <div class="phase-content">
+        Construyo el sitio con el diseño que aprobaste. Configuro el panel donde tú podrás administrar todo. Hago las primeras pruebas para asegurar que funciona bien.
+        <strong>Duración:</strong> 3 semanas
+        <strong>Lo que entrego:</strong> Sitio completo listo para que lo pruebes
+      </div>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div>
+      <div class="phase-num">03</div>
+      <div class="phase-label">Ajustes</div>
+    </div>
+    <div>
+      <h3>Pulimos detalles y te capacitamos</h3>
+      <div class="phase-content">
+        Hago ajustes finales según lo que veas. Pruebo que todo funcione bien en celular, tablet y computadora. Nos vemos por videollamada para que te enseñe cómo usar el panel, hacemos preguntas, aclaramos dudas.
+        <strong>Duración:</strong> 2 semanas
+        <strong>Lo que entrego:</strong> Videollamada de capacitación + manual de uso + sitio listo para publicar
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-label"><span>Comparación</span><span>04</span></div>
+  <h2>Antes y después.</h2>
+
+  <div class="scroller">
+    <table>
+      <caption>Tu sitio actual vs. el sitio nuevo</caption>
+      <thead>
+        <tr><th scope="col">Aspecto</th><th scope="col">Ahora</th><th scope="col">Nuevo sitio</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Diseño</th>
+          <td>Plantilla genérica</td>
+          <td>Personalizado para ti (rosa, minimalista)</td>
+        </tr>
+        <tr>
+          <th scope="row">Galería de obras</th>
+          <td>Mezclada con blog posts</td>
+          <td>Galería clara, en primer plano</td>
+        </tr>
+        <tr>
+          <th scope="row">Actualizar contenido</th>
+          <td>Tienes que pedir ayuda</td>
+          <td>Tú sola, con el panel</td>
+        </tr>
+        <tr>
+          <th scope="row">Velocidad</th>
+          <td>Blogger (depende de ellos)</td>
+          <td>Muy rápido, optimizado</td>
+        </tr>
+        <tr>
+          <th scope="row">Buscadores (SEO)</th>
+          <td>Básico</td>
+          <td>Optimizado para que te encuentren</td>
+        </tr>
+        <tr>
+          <th scope="row">Mobile</th>
+          <td>Responsive básico</td>
+          <td>Perfecto en celular</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="sec-label"><span>Inversión</span><span>05</span></div>
+  <h2>Qué cuesta y cómo pagamos.</h2>
+
+  <div class="budget">
+    <div>
+      <h3>Fase 1: Entrevista y diseño</h3>
+      <div class="amount">$150.000</div>
+      <div class="unit">pesos</div>
+      <p>Conversamos, diseño, bosquejo visual que apruebes.</p>
+    </div>
+    <div>
+      <h3>Fase 2: Construcción</h3>
+      <div class="amount">$250.000</div>
+      <div class="unit">pesos</div>
+      <p>Sitio completo + panel de gestión.</p>
+    </div>
+    <div>
+      <h3>Fase 3: Ajustes y capacitación</h3>
+      <div class="amount">$150.000</div>
+      <div class="unit">pesos</div>
+      <p>Pulidos finales + videollamada de capacitación + manual.</p>
+    </div>
+  </div>
+
+  <ul class="terms">
+    <li><strong>Total proyecto:</strong> $550.000 pesos.</li>
+    <li>Pago: 50% al empezar (Fase 1), 50% cuando está terminado.</li>
+    <li>Incluye: sitio + panel + capacitación + 1 mes de soporte por si tienes dudas.</li>
+    <li>Hosting y dominio: $45.000 pesos anuales (muy accesible, es independiente de este presupuesto).</li>
+  </ul>
+</section>
+
+<section>
+  <div class="sec-label"><span>Detalles</span><span>06</span></div>
+  <h2>Qué está incluido y qué no.</h2>
+
+  <div class="scope">
+    <div>
+      <h3>✓ Incluido</h3>
+      <ul>
+        <li>Diseño personalizado (rosa pastel)</li>
+        <li>Galería de obras</li>
+        <li>Blog integrado</li>
+        <li>Panel fácil de usar</li>
+        <li>Página sobre ti</li>
+        <li>Formulario de contacto</li>
+        <li>Funciona bien en celular</li>
+        <li>Videollamada de capacitación</li>
+        <li>Manual de instrucciones</li>
+        <li>Soporte por 1 mes</li>
+      </ul>
+    </div>
+    <div>
+      <h3>No incluido</h3>
+      <ul>
+        <li>Fotos profesionales de tus obras</li>
+        <li>Redacción de textos</li>
+        <li>Tienda o venta online</li>
+        <li>Integración de pagos</li>
+        <li>Soporte después de 1 mes</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="note">
+  <h3>Una cosa importante</h3>
+  <p>Este proyecto está diseñado para ser simple. Sin complicaciones. Solo lo que necesitas: mostrar tu trabajo y contar las historias detrás de él. Si después decides agregar algo más (como vender directamente desde el sitio), podemos hablar de una Fase 4. Pero por ahora, esto es lo que te propongo.</p>
+</div>
+
+<footer>
+  <span>Daniel Gamboa · Propuesta para Javiera Marambio</span>
+  <span>Agosto 2026</span>
+</footer>
+
+</div>
+</body>
+</html>
